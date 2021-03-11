@@ -33,11 +33,21 @@ namespace Physics_challenge
 
 		private void печатьToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			if (printDialog1.ShowDialog() == DialogResult.OK)
+			if (tabPage2.Focus() == true)
 			{
-				printDocument1.Print();
+				if (printDialog1.ShowDialog() == DialogResult.OK)
+				{
+					printDocument1.Print();
+				}
 			}
-
+			if (tabPage1.Focus() == true)
+			{
+				if (printDialog1.ShowDialog() == DialogResult.OK)
+				{
+					
+				}
+			}
+			
 		}
 
 		private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
