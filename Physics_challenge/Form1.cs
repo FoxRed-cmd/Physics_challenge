@@ -14,8 +14,8 @@ namespace Physics_challenge
 		public Form1()
 		{
 			InitializeComponent();
-			textBox1.Text = "60";
-			textBox2.Text = "60";
+			textBox1.Text = "69,344";
+			textBox2.Text = "45";
 			groupBox1.Text = "Параметры";
 			label1.Text = "Скорость:";
 			label2.Text = "Угол:";
@@ -23,6 +23,7 @@ namespace Physics_challenge
 			button1.Text = "Рассчитать";
 			tabPage1.Text = "График";
 			tabPage2.Text = "Таблица";
+			chart1.Series[0].LegendText = "Траектория";
 
 		}
 
@@ -31,7 +32,31 @@ namespace Physics_challenge
 
 		}
 
-		private void печатьToolStripMenuItem_Click(object sender, EventArgs e)
+
+		private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
+		{
+
+			if (tabPage2.Focus() == true)
+			{
+				Bitmap bitmap = new Bitmap(tableLayoutPanel1.Size.Width, tableLayoutPanel1.Size.Width);
+				tableLayoutPanel1.DrawToBitmap(bitmap, tableLayoutPanel1.Bounds);
+				e.Graphics.DrawImage(bitmap, 0, 0);
+			}
+			if (tabPage1.Focus() == true)
+			{
+				Bitmap bitmap1 = new Bitmap(chart1.Size.Width, chart1.Size.Height);
+				chart1.DrawToBitmap(bitmap1, chart1.Bounds);
+				e.Graphics.DrawImage(bitmap1, 0, 0);
+			}
+		}
+
+		private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			AboutBox1 aboutBox1 = new AboutBox1();
+			aboutBox1.Show();
+		}
+
+		private void печатьToolStripMenuItem1_Click(object sender, EventArgs e)
 		{
 			if (tabPage2.Focus() == true)
 			{
@@ -44,28 +69,15 @@ namespace Physics_challenge
 			{
 				if (printDialog1.ShowDialog() == DialogResult.OK)
 				{
-					
+					printDocument1.Print();
 				}
 			}
-			
-		}
-
-		private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
-		{
-			Bitmap bitmap = new Bitmap(tableLayoutPanel1.Size.Width, tableLayoutPanel1.Size.Width);
-			tableLayoutPanel1.DrawToBitmap(bitmap, tableLayoutPanel1.Bounds);
-			e.Graphics.DrawImage(bitmap, 0, 0);
-		}
-
-		private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			AboutBox1 aboutBox1 = new AboutBox1();
-			aboutBox1.Show();
 		}
 
 		private void button1_Click(object sender, EventArgs e)
 		{
 			tableLayoutPanel1.Controls.Clear();
+			chart1.Series[0].Points.Clear();
 
 			for (int i = 0; i < 3; i++)
 			{
@@ -87,6 +99,8 @@ namespace Physics_challenge
 
 				x = FindX(speed = double.Parse(textBox1.Text), angle = double.Parse(textBox2.Text), i);
 				y = FindY(speed = double.Parse(textBox1.Text), angle = double.Parse(textBox2.Text), i);
+
+				chart1.Series[0].Points.AddXY(x, y);
 
 				findX.Text = x.ToString();
 				findY.Text = y.ToString();

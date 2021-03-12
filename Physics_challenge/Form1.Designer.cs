@@ -29,9 +29,9 @@ namespace Physics_challenge
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-			System.Windows.Forms.DataVisualization.Charting.Legend legend11 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-			System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
+			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+			System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+			System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.печатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,6 +51,8 @@ namespace Physics_challenge
 			this.label1 = new System.Windows.Forms.Label();
 			this.printDocument1 = new System.Drawing.Printing.PrintDocument();
 			this.printDialog1 = new System.Windows.Forms.PrintDialog();
+			this.печатьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+			this.распечататьВсёToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip1.SuspendLayout();
 			this.tabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
@@ -74,11 +76,13 @@ namespace Physics_challenge
 			// 
 			// печатьToolStripMenuItem
 			// 
+			this.печатьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.печатьToolStripMenuItem1,
+            this.распечататьВсёToolStripMenuItem});
 			this.печатьToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
 			this.печатьToolStripMenuItem.Name = "печатьToolStripMenuItem";
-			this.печатьToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
-			this.печатьToolStripMenuItem.Text = "Печать";
-			this.печатьToolStripMenuItem.Click += new System.EventHandler(this.печатьToolStripMenuItem_Click);
+			this.печатьToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+			this.печатьToolStripMenuItem.Text = "Файл";
 			// 
 			// оПрограммеToolStripMenuItem
 			// 
@@ -111,18 +115,21 @@ namespace Physics_challenge
 			// 
 			// chart1
 			// 
-			chartArea11.Name = "ChartArea1";
-			this.chart1.ChartAreas.Add(chartArea11);
-			legend11.Name = "Legend1";
-			this.chart1.Legends.Add(legend11);
+			chartArea1.Name = "ChartArea1";
+			this.chart1.ChartAreas.Add(chartArea1);
+			legend1.Name = "Legend1";
+			this.chart1.Legends.Add(legend1);
 			this.chart1.Location = new System.Drawing.Point(6, 6);
 			this.chart1.Name = "chart1";
-			series11.ChartArea = "ChartArea1";
-			series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-			series11.Legend = "Legend1";
-			series11.Name = "Series1";
-			this.chart1.Series.Add(series11);
-			this.chart1.Size = new System.Drawing.Size(544, 273);
+			series1.ChartArea = "ChartArea1";
+			series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+			series1.Legend = "Legend1";
+			series1.MarkerBorderWidth = 4;
+			series1.MarkerSize = 7;
+			series1.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+			series1.Name = "Series1";
+			this.chart1.Series.Add(series1);
+			this.chart1.Size = new System.Drawing.Size(544, 365);
 			this.chart1.TabIndex = 0;
 			this.chart1.Text = "chart1";
 			// 
@@ -263,6 +270,19 @@ namespace Physics_challenge
 			// 
 			this.printDialog1.UseEXDialog = true;
 			// 
+			// печатьToolStripMenuItem1
+			// 
+			this.печатьToolStripMenuItem1.Name = "печатьToolStripMenuItem1";
+			this.печатьToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+			this.печатьToolStripMenuItem1.Text = "Печать";
+			this.печатьToolStripMenuItem1.Click += new System.EventHandler(this.печатьToolStripMenuItem1_Click);
+			// 
+			// распечататьВсёToolStripMenuItem
+			// 
+			this.распечататьВсёToolStripMenuItem.Name = "распечататьВсёToolStripMenuItem";
+			this.распечататьВсёToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.распечататьВсёToolStripMenuItem.Text = "Распечатать всё";
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -274,8 +294,9 @@ namespace Physics_challenge
 			this.Controls.Add(this.menuStrip1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			this.MainMenuStrip = this.menuStrip1;
-			this.MinimizeBox = false;
+			this.MaximizeBox = false;
 			this.Name = "Form1";
+			this.Opacity = 0.97D;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Form1";
 			this.Load += new System.EventHandler(this.Form1_Load);
@@ -312,6 +333,8 @@ namespace Physics_challenge
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 		private System.Drawing.Printing.PrintDocument printDocument1;
 		private System.Windows.Forms.PrintDialog printDialog1;
+		private System.Windows.Forms.ToolStripMenuItem печатьToolStripMenuItem1;
+		private System.Windows.Forms.ToolStripMenuItem распечататьВсёToolStripMenuItem;
 	}
 }
 
