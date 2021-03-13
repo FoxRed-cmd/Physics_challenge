@@ -34,6 +34,8 @@ namespace Physics_challenge
 			System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.печатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.печатьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+			this.распечататьВсёToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -51,8 +53,6 @@ namespace Physics_challenge
 			this.label1 = new System.Windows.Forms.Label();
 			this.printDocument1 = new System.Drawing.Printing.PrintDocument();
 			this.printDialog1 = new System.Windows.Forms.PrintDialog();
-			this.печатьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-			this.распечататьВсёToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip1.SuspendLayout();
 			this.tabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
@@ -83,6 +83,19 @@ namespace Physics_challenge
 			this.печатьToolStripMenuItem.Name = "печатьToolStripMenuItem";
 			this.печатьToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
 			this.печатьToolStripMenuItem.Text = "Файл";
+			// 
+			// печатьToolStripMenuItem1
+			// 
+			this.печатьToolStripMenuItem1.Name = "печатьToolStripMenuItem1";
+			this.печатьToolStripMenuItem1.Size = new System.Drawing.Size(162, 22);
+			this.печатьToolStripMenuItem1.Text = "Печать";
+			this.печатьToolStripMenuItem1.Click += new System.EventHandler(this.печатьToolStripMenuItem1_Click);
+			// 
+			// распечататьВсёToolStripMenuItem
+			// 
+			this.распечататьВсёToolStripMenuItem.Name = "распечататьВсёToolStripMenuItem";
+			this.распечататьВсёToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+			this.распечататьВсёToolStripMenuItem.Text = "Распечатать всё";
 			// 
 			// оПрограммеToolStripMenuItem
 			// 
@@ -270,19 +283,6 @@ namespace Physics_challenge
 			// 
 			this.printDialog1.UseEXDialog = true;
 			// 
-			// печатьToolStripMenuItem1
-			// 
-			this.печатьToolStripMenuItem1.Name = "печатьToolStripMenuItem1";
-			this.печатьToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-			this.печатьToolStripMenuItem1.Text = "Печать";
-			this.печатьToolStripMenuItem1.Click += new System.EventHandler(this.печатьToolStripMenuItem1_Click);
-			// 
-			// распечататьВсёToolStripMenuItem
-			// 
-			this.распечататьВсёToolStripMenuItem.Name = "распечататьВсёToolStripMenuItem";
-			this.распечататьВсёToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-			this.распечататьВсёToolStripMenuItem.Text = "Распечатать всё";
-			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -300,6 +300,7 @@ namespace Physics_challenge
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Form1";
 			this.Load += new System.EventHandler(this.Form1_Load);
+			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
 			this.tabControl1.ResumeLayout(false);

@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Printing;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace Physics_challenge
@@ -9,7 +11,13 @@ namespace Physics_challenge
 	{
 		double speed, angle, quantity, time, height, x, y;
 		const double G = 9.80665;
-		string[] _temps = { "Time", "X", "Y" };
+		private List<string> _temps = new List<string>() {"Time", "X", "Y" };
+
+		[DllImport("winmm.dll")]
+		public static extern int waveOutGetVolume(IntPtr h, out uint dwVolume);
+
+		[DllImport("winmm.dll")]
+		public static extern int waveOutSetVolume(IntPtr h, uint dwVolume);
 
 		public Form1()
 		{
@@ -24,29 +32,36 @@ namespace Physics_challenge
 			tabPage1.Text = "График";
 			tabPage2.Text = "Таблица";
 			chart1.Series[0].LegendText = "Траектория";
-
 		}
-
 		private void Form1_Load(object sender, EventArgs e)
 		{
+			KeyPreview = true;
+			uint _savedVolume;
+			waveOutGetVolume(IntPtr.Zero, out _savedVolume);
 
+			this.FormClosing += delegate
+			{
+				// восстанавливаем громкость на выходе
+				waveOutSetVolume(IntPtr.Zero, _savedVolume);
+			};
+
+			// глушим
+			waveOutSetVolume(IntPtr.Zero, 0);
 		}
-
 
 		private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
 		{
-
-			if (tabPage2.Focus() == true)
-			{
-				Bitmap bitmap = new Bitmap(tableLayoutPanel1.Size.Width, tableLayoutPanel1.Size.Width);
-				tableLayoutPanel1.DrawToBitmap(bitmap, tableLayoutPanel1.Bounds);
-				e.Graphics.DrawImage(bitmap, 0, 0);
-			}
 			if (tabPage1.Focus() == true)
 			{
 				Bitmap bitmap1 = new Bitmap(chart1.Size.Width, chart1.Size.Height);
 				chart1.DrawToBitmap(bitmap1, chart1.Bounds);
 				e.Graphics.DrawImage(bitmap1, 0, 0);
+			}
+			if (tabPage2.Focus() == true)
+			{
+				Bitmap bitmap = new Bitmap(tableLayoutPanel1.Size.Width, tableLayoutPanel1.Size.Width);
+				tableLayoutPanel1.DrawToBitmap(bitmap, tableLayoutPanel1.Bounds);
+				e.Graphics.DrawImage(bitmap, 0, 0);
 			}
 		}
 
@@ -71,6 +86,24 @@ namespace Physics_challenge
 				{
 					printDocument1.Print();
 				}
+			}
+		}
+
+		private void Form1_KeyDown(object sender, KeyEventArgs e)
+		{
+			switch (e.KeyValue)
+			{
+				case (int)Keys.Enter:
+					button1.Focus();
+					button1_Click(sender, e);
+					break;
+
+				case (int)Keys.Escape:
+					Close();
+					break;
+
+				default:
+					break;
 			}
 		}
 
