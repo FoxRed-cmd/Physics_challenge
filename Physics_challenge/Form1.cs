@@ -11,7 +11,7 @@ namespace Physics_challenge
 	{
 		double speed, angle, quantity, time, height, x, y;
 		const double G = 9.80665;
-		private List<string> _temps = new List<string>() {"Time", "X", "Y" };
+		private List<string> _temps = new List<string>() { "Time", "X", "Y" };
 
 		[DllImport("winmm.dll")]
 		public static extern int waveOutGetVolume(IntPtr h, out uint dwVolume);
@@ -32,6 +32,7 @@ namespace Physics_challenge
 			tabPage1.Text = "График";
 			tabPage2.Text = "Таблица";
 			chart1.Series[0].LegendText = "Траектория";
+			this.Text = "Камнем по голове";
 		}
 		private void Form1_Load(object sender, EventArgs e)
 		{
@@ -47,6 +48,7 @@ namespace Physics_challenge
 
 			// глушим
 			waveOutSetVolume(IntPtr.Zero, 0);
+
 		}
 
 		private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
@@ -96,6 +98,7 @@ namespace Physics_challenge
 				case (int)Keys.Enter:
 					button1.Focus();
 					button1_Click(sender, e);
+					tabControl1.Focus();
 					break;
 
 				case (int)Keys.Escape:
@@ -130,13 +133,23 @@ namespace Physics_challenge
 				findX.ColorChange();
 				findY.ColorChange();
 
-				x = FindX(speed = double.Parse(textBox1.Text), angle = double.Parse(textBox2.Text), i);
-				y = FindY(speed = double.Parse(textBox1.Text), angle = double.Parse(textBox2.Text), i);
+				try
+				{
+					x = FindX(speed = double.Parse(textBox1.Text), angle = double.Parse(textBox2.Text), i);
+					y = FindY(speed = double.Parse(textBox1.Text), angle = double.Parse(textBox2.Text), i);
+				}
+				catch (Exception)
+				{
+					MessageBox.Show("Введены неверные данные!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					break;
+				}
+
+				string _x = String.Format("{0:f1}", x);
+				string _y = String.Format("{0:f1}", y);
 
 				chart1.Series[0].Points.AddXY(x, y);
-
-				findX.Text = x.ToString();
-				findY.Text = y.ToString();
+				findX.Text = _x;
+				findY.Text = _y;
 				findTime.Text = i.ToString();
 
 				tableLayoutPanel1.Controls.Add(findTime, 0, j);
@@ -173,6 +186,4 @@ namespace Physics_challenge
 			return (-(G * Math.Pow(time, 2)) / 2) + (speed * Math.Sin(angle) * time);
 		}
 	}
-
-
 }

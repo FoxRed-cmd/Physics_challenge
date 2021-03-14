@@ -1,0 +1,11 @@
+D:\Projects\Physics_challenge\Physics_challenge\bin\Release\Physics_challenge.exe.config
+D:\Projects\Physics_challenge\Physics_challenge\bin\Release\Physics_challenge.exe
+D:\Projects\Physics_challenge\Physics_challenge\bin\Release\Physics_challenge.pdb
+D:\Projects\Physics_challenge\Physics_challenge\obj\Release\Physics_challenge.csprojAssemblyReference.cache
+D:\Projects\Physics_challenge\Physics_challenge\obj\Release\Physics_challenge.AboutBox1.resources
+D:\Projects\Physics_challenge\Physics_challenge\obj\Release\Physics_challenge.Form1.resources
+D:\Projects\Physics_challenge\Physics_challenge\obj\Release\Physics_challenge.Properties.Resources.resources
+D:\Projects\Physics_challenge\Physics_challenge\obj\Release\Physics_challenge.csproj.GenerateResource.cache
+D:\Projects\Physics_challenge\Physics_challenge\obj\Release\Physics_challenge.csproj.CoreCompileInputs.cache
+D:\Projects\Physics_challenge\Physics_challenge\obj\Release\Physics_challenge.exe
+D:\Projects\Physics_challenge\Physics_challenge\obj\Release\Physics_challenge.pdb

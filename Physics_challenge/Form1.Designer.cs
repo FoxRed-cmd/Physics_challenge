@@ -29,9 +29,9 @@ namespace Physics_challenge
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-			System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-			System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+			System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+			System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.печатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.печатьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -113,7 +113,7 @@ namespace Physics_challenge
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
 			this.tabControl1.Size = new System.Drawing.Size(564, 403);
-			this.tabControl1.TabIndex = 2;
+			this.tabControl1.TabIndex = 4;
 			// 
 			// tabPage1
 			// 
@@ -128,20 +128,20 @@ namespace Physics_challenge
 			// 
 			// chart1
 			// 
-			chartArea1.Name = "ChartArea1";
-			this.chart1.ChartAreas.Add(chartArea1);
-			legend1.Name = "Legend1";
-			this.chart1.Legends.Add(legend1);
+			chartArea8.Name = "ChartArea1";
+			this.chart1.ChartAreas.Add(chartArea8);
+			legend8.Name = "Legend1";
+			this.chart1.Legends.Add(legend8);
 			this.chart1.Location = new System.Drawing.Point(6, 6);
 			this.chart1.Name = "chart1";
-			series1.ChartArea = "ChartArea1";
-			series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-			series1.Legend = "Legend1";
-			series1.MarkerBorderWidth = 4;
-			series1.MarkerSize = 7;
-			series1.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-			series1.Name = "Series1";
-			this.chart1.Series.Add(series1);
+			series8.ChartArea = "ChartArea1";
+			series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+			series8.Legend = "Legend1";
+			series8.MarkerBorderWidth = 4;
+			series8.MarkerSize = 7;
+			series8.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+			series8.Name = "Series1";
+			this.chart1.Series.Add(series8);
 			this.chart1.Size = new System.Drawing.Size(544, 365);
 			this.chart1.TabIndex = 0;
 			this.chart1.Text = "chart1";
@@ -198,7 +198,7 @@ namespace Physics_challenge
 			this.groupBox1.Location = new System.Drawing.Point(7, 49);
 			this.groupBox1.Name = "groupBox1";
 			this.groupBox1.Size = new System.Drawing.Size(235, 381);
-			this.groupBox1.TabIndex = 3;
+			this.groupBox1.TabIndex = 0;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "groupBox1";
 			// 
@@ -220,6 +220,7 @@ namespace Physics_challenge
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(75, 23);
 			this.button1.TabIndex = 2;
+			this.button1.TabStop = false;
 			this.button1.Text = "button1";
 			this.button1.UseVisualStyleBackColor = false;
 			this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -229,14 +230,14 @@ namespace Physics_challenge
 			this.textBox3.Location = new System.Drawing.Point(143, 105);
 			this.textBox3.Name = "textBox3";
 			this.textBox3.Size = new System.Drawing.Size(86, 20);
-			this.textBox3.TabIndex = 1;
+			this.textBox3.TabIndex = 3;
 			// 
 			// textBox2
 			// 
 			this.textBox2.Location = new System.Drawing.Point(143, 61);
 			this.textBox2.Name = "textBox2";
 			this.textBox2.Size = new System.Drawing.Size(86, 20);
-			this.textBox2.TabIndex = 1;
+			this.textBox2.TabIndex = 2;
 			// 
 			// textBox1
 			// 
