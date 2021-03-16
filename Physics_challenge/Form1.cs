@@ -171,8 +171,16 @@ namespace Physics_challenge
 			}
 			if (radioButton2.Checked)
 			{
-				int value = int.Parse(textBox3.Text);
-				Result(value);
+				try
+				{
+					int value = int.Parse(textBox3.Text);
+					Result(value);
+				}
+				catch (Exception)
+				{
+					MessageBox.Show("Введены неверные данные!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					return;
+				}
 			}
 		}
 
@@ -240,7 +248,7 @@ namespace Physics_challenge
 			{
 				timeFly = Math.Round(TimeFly(speed = double.Parse(textBox1.Text), angle = double.Parse(textBox2.Text)), 2);
 			}
-			catch (FormatException)
+			catch (Exception)
 			{
 				MessageBox.Show("Введены неверные данные!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				chart1.Series.RemoveAt(countSeries);
@@ -315,7 +323,7 @@ namespace Physics_challenge
 			{
 				timeFly = Math.Round(TimeFly(speed = double.Parse(textBox1.Text), angle = double.Parse(textBox2.Text)), 2);
 			}
-			catch (FormatException)
+			catch (Exception)
 			{
 				MessageBox.Show("Введены неверные данные!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
@@ -421,6 +429,5 @@ namespace Physics_challenge
 			}
 			
 		}
-
 	}
 }
