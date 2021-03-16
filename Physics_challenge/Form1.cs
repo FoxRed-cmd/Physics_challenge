@@ -12,7 +12,7 @@ namespace Physics_challenge
 	{
 		double speed, angle, quantity, timeFly, height, x, y, time = 0;
 		const double G = 9.80665;
-		private List<string> _temps = new List<string>() { "Time", "MaxFly", "MaxHeight" };
+		private List<string> _temps = new List<string>() { "Время(сек)", "Дальность(м)", "Высота(м)" };
 		bool flagClear = false;
 		int count = 1, countSeries = 0;
 
