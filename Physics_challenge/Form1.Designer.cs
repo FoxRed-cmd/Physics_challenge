@@ -29,9 +29,8 @@ namespace Physics_challenge
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-			System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-			System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+			System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.печатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.печатьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,7 +42,6 @@ namespace Physics_challenge
 			this.tabPage2 = new System.Windows.Forms.TabPage();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.label4 = new System.Windows.Forms.Label();
 			this.button1 = new System.Windows.Forms.Button();
 			this.textBox3 = new System.Windows.Forms.TextBox();
 			this.textBox2 = new System.Windows.Forms.TextBox();
@@ -53,6 +51,10 @@ namespace Physics_challenge
 			this.label1 = new System.Windows.Forms.Label();
 			this.printDocument1 = new System.Drawing.Printing.PrintDocument();
 			this.printDialog1 = new System.Windows.Forms.PrintDialog();
+			this.radioButton1 = new System.Windows.Forms.RadioButton();
+			this.radioButton2 = new System.Windows.Forms.RadioButton();
+			this.очиститьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.printDocument2 = new System.Drawing.Printing.PrintDocument();
 			this.menuStrip1.SuspendLayout();
 			this.tabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
@@ -67,10 +69,11 @@ namespace Physics_challenge
 			this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.печатьToolStripMenuItem,
-            this.оПрограммеToolStripMenuItem});
+            this.оПрограммеToolStripMenuItem,
+            this.очиститьToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(824, 24);
+			this.menuStrip1.Size = new System.Drawing.Size(858, 24);
 			this.menuStrip1.TabIndex = 1;
 			this.menuStrip1.Text = "menuStrip1";
 			// 
@@ -94,8 +97,9 @@ namespace Physics_challenge
 			// распечататьВсёToolStripMenuItem
 			// 
 			this.распечататьВсёToolStripMenuItem.Name = "распечататьВсёToolStripMenuItem";
-			this.распечататьВсёToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+			this.распечататьВсёToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.распечататьВсёToolStripMenuItem.Text = "Распечатать всё";
+			this.распечататьВсёToolStripMenuItem.Click += new System.EventHandler(this.распечататьВсёToolStripMenuItem_Click);
 			// 
 			// оПрограммеToolStripMenuItem
 			// 
@@ -112,7 +116,7 @@ namespace Physics_challenge
 			this.tabControl1.Location = new System.Drawing.Point(248, 27);
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(564, 403);
+			this.tabControl1.Size = new System.Drawing.Size(598, 433);
 			this.tabControl1.TabIndex = 4;
 			// 
 			// tabPage1
@@ -122,27 +126,19 @@ namespace Physics_challenge
 			this.tabPage1.Location = new System.Drawing.Point(4, 22);
 			this.tabPage1.Name = "tabPage1";
 			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage1.Size = new System.Drawing.Size(556, 377);
+			this.tabPage1.Size = new System.Drawing.Size(590, 407);
 			this.tabPage1.TabIndex = 0;
 			this.tabPage1.Text = "tabPage1";
 			// 
 			// chart1
 			// 
-			chartArea8.Name = "ChartArea1";
-			this.chart1.ChartAreas.Add(chartArea8);
-			legend8.Name = "Legend1";
-			this.chart1.Legends.Add(legend8);
+			chartArea10.Name = "ChartArea1";
+			this.chart1.ChartAreas.Add(chartArea10);
+			legend10.Name = "Legend1";
+			this.chart1.Legends.Add(legend10);
 			this.chart1.Location = new System.Drawing.Point(6, 6);
 			this.chart1.Name = "chart1";
-			series8.ChartArea = "ChartArea1";
-			series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-			series8.Legend = "Legend1";
-			series8.MarkerBorderWidth = 4;
-			series8.MarkerSize = 7;
-			series8.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-			series8.Name = "Series1";
-			this.chart1.Series.Add(series8);
-			this.chart1.Size = new System.Drawing.Size(544, 365);
+			this.chart1.Size = new System.Drawing.Size(578, 395);
 			this.chart1.TabIndex = 0;
 			this.chart1.Text = "chart1";
 			// 
@@ -153,20 +149,20 @@ namespace Physics_challenge
 			this.tabPage2.Location = new System.Drawing.Point(4, 22);
 			this.tabPage2.Name = "tabPage2";
 			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage2.Size = new System.Drawing.Size(556, 377);
+			this.tabPage2.Size = new System.Drawing.Size(590, 407);
 			this.tabPage2.TabIndex = 1;
 			this.tabPage2.Text = "tabPage2";
 			// 
 			// tableLayoutPanel1
 			// 
-			this.tableLayoutPanel1.ColumnCount = 4;
+			this.tableLayoutPanel1.AutoScroll = true;
+			this.tableLayoutPanel1.ColumnCount = 3;
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-			this.tableLayoutPanel1.Location = new System.Drawing.Point(16, 19);
+			this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 6);
 			this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-			this.tableLayoutPanel1.RowCount = 12;
+			this.tableLayoutPanel1.RowCount = 13;
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
@@ -179,13 +175,15 @@ namespace Physics_challenge
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
 			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-			this.tableLayoutPanel1.Size = new System.Drawing.Size(525, 278);
+			this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			this.tableLayoutPanel1.Size = new System.Drawing.Size(578, 395);
 			this.tableLayoutPanel1.TabIndex = 0;
 			// 
 			// groupBox1
 			// 
 			this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(43)))), ((int)(((byte)(62)))));
-			this.groupBox1.Controls.Add(this.label4);
+			this.groupBox1.Controls.Add(this.radioButton2);
+			this.groupBox1.Controls.Add(this.radioButton1);
 			this.groupBox1.Controls.Add(this.button1);
 			this.groupBox1.Controls.Add(this.textBox3);
 			this.groupBox1.Controls.Add(this.textBox2);
@@ -197,26 +195,17 @@ namespace Physics_challenge
 			this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
 			this.groupBox1.Location = new System.Drawing.Point(7, 49);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(235, 381);
+			this.groupBox1.Size = new System.Drawing.Size(235, 411);
 			this.groupBox1.TabIndex = 0;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "groupBox1";
-			// 
-			// label4
-			// 
-			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(84, 210);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(35, 13);
-			this.label4.TabIndex = 3;
-			this.label4.Text = "label4";
 			// 
 			// button1
 			// 
 			this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(72)))), ((int)(((byte)(105)))));
 			this.button1.FlatAppearance.BorderSize = 0;
 			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.button1.Location = new System.Drawing.Point(9, 352);
+			this.button1.Location = new System.Drawing.Point(9, 378);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(75, 23);
 			this.button1.TabIndex = 2;
@@ -284,12 +273,46 @@ namespace Physics_challenge
 			// 
 			this.printDialog1.UseEXDialog = true;
 			// 
+			// radioButton1
+			// 
+			this.radioButton1.AutoSize = true;
+			this.radioButton1.Location = new System.Drawing.Point(9, 148);
+			this.radioButton1.Name = "radioButton1";
+			this.radioButton1.Size = new System.Drawing.Size(85, 17);
+			this.radioButton1.TabIndex = 4;
+			this.radioButton1.TabStop = true;
+			this.radioButton1.Text = "radioButton1";
+			this.radioButton1.UseVisualStyleBackColor = true;
+			// 
+			// radioButton2
+			// 
+			this.radioButton2.AutoSize = true;
+			this.radioButton2.Location = new System.Drawing.Point(9, 171);
+			this.radioButton2.Name = "radioButton2";
+			this.radioButton2.Size = new System.Drawing.Size(85, 17);
+			this.radioButton2.TabIndex = 4;
+			this.radioButton2.TabStop = true;
+			this.radioButton2.Text = "radioButton1";
+			this.radioButton2.UseVisualStyleBackColor = true;
+			// 
+			// очиститьToolStripMenuItem
+			// 
+			this.очиститьToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+			this.очиститьToolStripMenuItem.Name = "очиститьToolStripMenuItem";
+			this.очиститьToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
+			this.очиститьToolStripMenuItem.Text = "Очистить";
+			this.очиститьToolStripMenuItem.Click += new System.EventHandler(this.очиститьToolStripMenuItem_Click);
+			// 
+			// printDocument2
+			// 
+			this.printDocument2.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument2_PrintPage);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.SlateGray;
-			this.ClientSize = new System.Drawing.Size(824, 441);
+			this.ClientSize = new System.Drawing.Size(858, 472);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.tabControl1);
 			this.Controls.Add(this.menuStrip1);
@@ -331,12 +354,15 @@ namespace Physics_challenge
 		private System.Windows.Forms.TextBox textBox1;
 		private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
 		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 		private System.Drawing.Printing.PrintDocument printDocument1;
 		private System.Windows.Forms.PrintDialog printDialog1;
 		private System.Windows.Forms.ToolStripMenuItem печатьToolStripMenuItem1;
 		private System.Windows.Forms.ToolStripMenuItem распечататьВсёToolStripMenuItem;
+		private System.Windows.Forms.RadioButton radioButton2;
+		private System.Windows.Forms.RadioButton radioButton1;
+		private System.Windows.Forms.ToolStripMenuItem очиститьToolStripMenuItem;
+		private System.Drawing.Printing.PrintDocument printDocument2;
 	}
 }
 
