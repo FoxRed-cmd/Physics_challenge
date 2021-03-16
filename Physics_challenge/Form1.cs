@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Runtime.InteropServices;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -30,8 +28,8 @@ namespace Physics_challenge
 			textBox1.Text = "69,344";
 			textBox2.Text = "45";
 			groupBox1.Text = "Параметры";
-			label1.Text = "Скорость:";
-			label2.Text = "Угол:";
+			label1.Text = "Скорость (м/с):";
+			label2.Text = "Угол (градусы):";
 			label3.Text = "Количество попыток:";
 			button1.Text = "Рассчитать";
 			tabPage1.Text = "График";
@@ -45,7 +43,7 @@ namespace Physics_challenge
 				{
 					textBox3.Visible = false;
 					label3.Visible = false;
-				} 
+				}
 			};
 			radioButton2.CheckedChanged += (a, e) =>
 			{
@@ -53,7 +51,7 @@ namespace Physics_challenge
 				{
 					textBox3.Visible = true;
 					label3.Visible = true;
-				} 
+				}
 			};
 
 		}
@@ -308,7 +306,7 @@ namespace Physics_challenge
 					}
 				}
 				findY.Text = maxY.Substring(countMaxY).Replace("}", "");
-				findX.Text = x.ToString();
+				findX.Text = "X=" + x.ToString();
 				findTime.Text = Math.Round(time).ToString();
 
 				tableLayoutPanel1.Controls.Add(findTime, 0, count);
@@ -416,7 +414,7 @@ namespace Physics_challenge
 						}
 					}
 					findY.Text = maxY.Substring(countMaxY).Replace("}", "");
-					findX.Text = x.ToString();
+					findX.Text = "X=" + x.ToString();
 					findTime.Text = Math.Round(time).ToString();
 
 					tableLayoutPanel1.Controls.Add(findTime, 0, count);
@@ -429,7 +427,7 @@ namespace Physics_challenge
 
 				}
 			}
-			
+
 		}
 	}
 }
