@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Runtime.InteropServices;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -287,7 +289,7 @@ namespace Physics_challenge
 
 					chart1.Series[countSeries].Points.AddXY(x, y);
 
-					time += 0.01;
+					time += 0.1;
 
 				} while (!(y <= 0 && x != 0));
 
@@ -393,7 +395,7 @@ namespace Physics_challenge
 
 						chart1.Series[countSeries].Points.AddXY(x, y);
 
-						time += 0.01;
+						time += 0.1;
 
 					} while (!(y <= 0 && x != 0));
 
