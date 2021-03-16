@@ -261,7 +261,7 @@ namespace Physics_challenge
 				findX.ColorChange();
 				findY.ColorChange();
 
-				y = HeightFly(speed, angle);
+				y = HeightFly(speed, angle)/100;
 				chart1.Series[countSeries].Points.AddXY(0, y);
 
 				findX.Text = "0";
@@ -366,7 +366,7 @@ namespace Physics_challenge
 					findX.ColorChange();
 					findY.ColorChange();
 
-					y = HeightFly(speed, angle);
+					y = HeightFly(speed, angle)/100;
 					chart1.Series[countSeries].Points.AddXY(0, y);
 
 					findX.Text = "0";
