@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -10,10 +11,18 @@ namespace Physics_challenge
 {
 	public partial class Form1 : Form
 	{
-		double speed, angle, quantity, timeFly, height, x, y, time = 0;
+		double speed, angle, timeFly, x, y, time = 0, interval;
+		List<DoublePoint> points = new List<DoublePoint>();
+		Graphics graphics;
+		Pen pen;
+		SolidBrush brush;
+		SolidBrush clear = new SolidBrush(Color.White);
+		/// <summary>
+		/// Ускорение свободного падения
+		/// </summary>
 		const double G = 9.80665;
 		private List<string> _temps = new List<string>() { "Время(сек)", "Дальность(м)", "Высота(м)" };
-		bool flagClear = false;
+		bool flagClear = false, flagAnim = true;
 		int count = 1, countSeries = 0;
 
 		[DllImport("winmm.dll")]
@@ -27,16 +36,20 @@ namespace Physics_challenge
 			InitializeComponent();
 			textBox1.Text = "69,344";
 			textBox2.Text = "45";
+			textBox4.Text = "0,1";
 			groupBox1.Text = "Параметры";
 			label1.Text = "Скорость (м/с):";
 			label2.Text = "Угол (градусы):";
 			label3.Text = "Количество попыток:";
+			label4.Text = "Интервал (cек):";
 			button1.Text = "Рассчитать";
 			tabPage1.Text = "График";
 			tabPage2.Text = "Таблица";
+			tabPage3.Text = "Анимация";
 			this.Text = "Камнем по голове";
 			radioButton1.Text = "Обычный ввод";
 			radioButton2.Text = "С количеством попыток";
+			button2.Text = "Старт";
 			radioButton1.CheckedChanged += (a, e) =>
 			{
 				if (radioButton1.Checked)
@@ -132,7 +145,7 @@ namespace Physics_challenge
 			}
 		}
 
-		private void очиститьToolStripMenuItem_Click(object sender, EventArgs e)
+		private void ОчиститьToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			tableLayoutPanel1.Controls.Clear();
 			chart1.Series.Clear();
@@ -142,9 +155,10 @@ namespace Physics_challenge
 			textBox1.Clear();
 			textBox3.Clear();
 			textBox2.Clear();
+			textBox4.Clear();
 		}
 
-		private void распечататьВсёToolStripMenuItem_Click(object sender, EventArgs e)
+		private void РаспечататьВсёToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			if (printDialog1.ShowDialog() == DialogResult.OK)
 			{
@@ -183,6 +197,20 @@ namespace Physics_challenge
 				}
 			}
 		}
+		private void button2_Click(object sender, EventArgs e)
+		{
+			if (points.Count > 0)
+			{
+				timer1.Enabled = true;
+				timer1.Interval = 3000;
+				flagAnim = false;
+			}
+			else
+			{
+				MessageBox.Show("Ошибка", "ошибка", MessageBoxButtons.OK);
+			}
+			
+		}
 
 		static double TimeFly(double speed, double angle)
 		{
@@ -190,33 +218,48 @@ namespace Physics_challenge
 			return (2 * speed * Math.Sin(angle)) / G;
 		}
 
+		private async void timer1_Tick(object sender, EventArgs e)
+		{
+			graphics = pictureBox1.CreateGraphics();
+			pen = new Pen(Color.LimeGreen, 2);
+			brush = new SolidBrush(Color.Silver);
+			while (tabPage3.Focus() == true)
+			{
+
+				foreach (var item in points)
+				{
+					graphics.FillEllipse(brush, (float)item.X, (float)item.Y, 10, 10);
+					graphics.DrawEllipse(pen, (float)item.X, (float)item.Y, 10, 10);
+					await Task.Delay(100);
+				}
+			}
+		}
+
 		static double SqrtSin(double value)
 		{
 			return (1 - Math.Cos(2 * value)) / 2;
 		}
-
 		static double HeightFly(double speed, double angle)
 		{
 			return (Math.Pow(speed, 2) / 2 * G) * SqrtSin(angle);
 		}
-
 		static double FindX(double speed, double angle, double time)
 		{
 			angle *= Math.PI / 180.0;
 			return speed * Math.Cos(angle) * time;
 		}
-
 		static double FindY(double speed, double angle, double time)
 		{
 			angle *= Math.PI / 180.0;
 			return (-(G * Math.Pow(time, 2)) / 2) + (speed * Math.Sin(angle) * time);
 		}
-
 		private void Result()
 		{
 			Label findX = new Label();
 			Label findTime = new Label();
 			Label findY = new Label();
+			points.Clear();
+
 
 			Series series = new Series();
 			series.BorderWidth = 3;
@@ -247,6 +290,7 @@ namespace Physics_challenge
 			try
 			{
 				timeFly = Math.Round(TimeFly(speed = double.Parse(textBox1.Text), angle = double.Parse(textBox2.Text)), 2);
+				interval = double.Parse(textBox4.Text);
 			}
 			catch (Exception)
 			{
@@ -261,7 +305,7 @@ namespace Physics_challenge
 				findX.ColorChange();
 				findY.ColorChange();
 
-				y = HeightFly(speed, angle)/100;
+				y = HeightFly(speed, angle) / 100;
 				chart1.Series[countSeries].Points.AddXY(0, y);
 
 				findX.Text = "0";
@@ -285,9 +329,10 @@ namespace Physics_challenge
 					x = Math.Round(FindX(speed = double.Parse(textBox1.Text), angle = double.Parse(textBox2.Text), time), 1);
 					y = Math.Round(FindY(speed = double.Parse(textBox1.Text), angle = double.Parse(textBox2.Text), time), 1);
 
+					points.Add(new DoublePoint() { X = x, Y = pictureBox1.Height - y });
 					chart1.Series[countSeries].Points.AddXY(x, y);
 
-					time += 0.1;
+					time += interval;
 
 				} while (!(y <= 0 && x != 0));
 
@@ -366,7 +411,7 @@ namespace Physics_challenge
 					findX.ColorChange();
 					findY.ColorChange();
 
-					y = HeightFly(speed, angle)/100;
+					y = HeightFly(speed, angle) / 100;
 					chart1.Series[countSeries].Points.AddXY(0, y);
 
 					findX.Text = "0";
