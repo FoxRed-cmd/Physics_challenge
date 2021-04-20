@@ -22,7 +22,7 @@ namespace Physics_challenge
 		/// </summary>
 		const double G = 9.80665;
 		private List<string> _temps = new List<string>() { "Время(сек)", "Дальность(м)", "Высота(м)" };
-		bool flagClear = false, flagAnim = true;
+		bool flagClear = false;
 		int count = 1, countSeries = 0;
 
 		[DllImport("winmm.dll")]
@@ -101,13 +101,11 @@ namespace Physics_challenge
 				e.Graphics.DrawImage(bitmap, 0, 0);
 			}
 		}
-
 		private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			AboutBox1 aboutBox1 = new AboutBox1();
 			aboutBox1.Show();
 		}
-
 		private void печатьToolStripMenuItem1_Click(object sender, EventArgs e)
 		{
 			if (tabPage2.Focus() == true)
@@ -125,7 +123,6 @@ namespace Physics_challenge
 				}
 			}
 		}
-
 		private void Form1_KeyDown(object sender, KeyEventArgs e)
 		{
 			switch (e.KeyValue)
@@ -144,7 +141,6 @@ namespace Physics_challenge
 					break;
 			}
 		}
-
 		private void ОчиститьToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			tableLayoutPanel1.Controls.Clear();
@@ -157,7 +153,6 @@ namespace Physics_challenge
 			textBox2.Clear();
 			textBox4.Clear();
 		}
-
 		private void РаспечататьВсёToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			if (printDialog1.ShowDialog() == DialogResult.OK)
@@ -165,7 +160,6 @@ namespace Physics_challenge
 				printDocument2.Print();
 			}
 		}
-
 		private void printDocument2_PrintPage(object sender, PrintPageEventArgs e)
 		{
 			Bitmap bitmap1 = new Bitmap(chart1.Size.Width, chart1.Size.Height);
@@ -179,6 +173,7 @@ namespace Physics_challenge
 
 		private void button1_Click(object sender, EventArgs e)
 		{
+			points.Clear();
 			if (radioButton1.Checked)
 			{
 				Result();
@@ -201,24 +196,31 @@ namespace Physics_challenge
 		{
 			if (points.Count > 0)
 			{
-				timer1.Enabled = true;
-				timer1.Interval = 3000;
-				flagAnim = false;
+				Draw();
+				//timer1.Enabled = true;
+				//timer1.Interval = 3000;
+				//flagAnim = false;
 			}
 			else
 			{
 				MessageBox.Show("Ошибка", "ошибка", MessageBoxButtons.OK);
 			}
-			
+
 		}
+
+
+
+		//private async void timer1_Tick(object sender, EventArgs e)
+		//{
+
+		//}
 
 		static double TimeFly(double speed, double angle)
 		{
 			angle *= Math.PI / 180.0;
 			return (2 * speed * Math.Sin(angle)) / G;
 		}
-
-		private async void timer1_Tick(object sender, EventArgs e)
+		public async void Draw()
 		{
 			graphics = pictureBox1.CreateGraphics();
 			pen = new Pen(Color.LimeGreen, 2);
@@ -230,11 +232,11 @@ namespace Physics_challenge
 				{
 					graphics.FillEllipse(brush, (float)item.X, (float)item.Y, 10, 10);
 					graphics.DrawEllipse(pen, (float)item.X, (float)item.Y, 10, 10);
-					await Task.Delay(100);
+					await Task.Delay(10);
+					graphics.FillRectangle(clear, 0, 0, pictureBox1.Width, pictureBox1.Height);
 				}
 			}
 		}
-
 		static double SqrtSin(double value)
 		{
 			return (1 - Math.Cos(2 * value)) / 2;
@@ -258,7 +260,7 @@ namespace Physics_challenge
 			Label findX = new Label();
 			Label findTime = new Label();
 			Label findY = new Label();
-			points.Clear();
+
 
 
 			Series series = new Series();
@@ -334,7 +336,7 @@ namespace Physics_challenge
 
 					time += interval;
 
-				} while (!(y <= 0 && x != 0));
+				} while (!(y < 0 && x != 0));
 
 				string maxY = chart1.Series[countSeries].Points.FindMaxByValue("Y1", 1).ToString();
 				int countMaxY = 0;

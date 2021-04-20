@@ -29,9 +29,8 @@ namespace Physics_challenge
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
-			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-			System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+			System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.печатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.печатьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,17 +50,16 @@ namespace Physics_challenge
 			this.radioButton1 = new System.Windows.Forms.RadioButton();
 			this.button1 = new System.Windows.Forms.Button();
 			this.textBox3 = new System.Windows.Forms.TextBox();
+			this.textBox4 = new System.Windows.Forms.TextBox();
 			this.textBox2 = new System.Windows.Forms.TextBox();
 			this.textBox1 = new System.Windows.Forms.TextBox();
 			this.label3 = new System.Windows.Forms.Label();
+			this.label4 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.printDocument1 = new System.Drawing.Printing.PrintDocument();
 			this.printDialog1 = new System.Windows.Forms.PrintDialog();
 			this.printDocument2 = new System.Drawing.Printing.PrintDocument();
-			this.timer1 = new System.Windows.Forms.Timer(this.components);
-			this.textBox4 = new System.Windows.Forms.TextBox();
-			this.label4 = new System.Windows.Forms.Label();
 			this.menuStrip1.SuspendLayout();
 			this.tabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
@@ -150,10 +148,10 @@ namespace Physics_challenge
 			// 
 			// chart1
 			// 
-			chartArea6.Name = "ChartArea1";
-			this.chart1.ChartAreas.Add(chartArea6);
-			legend6.Name = "Legend1";
-			this.chart1.Legends.Add(legend6);
+			chartArea1.Name = "ChartArea1";
+			this.chart1.ChartAreas.Add(chartArea1);
+			legend1.Name = "Legend1";
+			this.chart1.Legends.Add(legend1);
 			this.chart1.Location = new System.Drawing.Point(6, 6);
 			this.chart1.Name = "chart1";
 			this.chart1.Size = new System.Drawing.Size(578, 395);
@@ -298,6 +296,13 @@ namespace Physics_challenge
 			this.textBox3.Size = new System.Drawing.Size(86, 20);
 			this.textBox3.TabIndex = 3;
 			// 
+			// textBox4
+			// 
+			this.textBox4.Location = new System.Drawing.Point(143, 71);
+			this.textBox4.Name = "textBox4";
+			this.textBox4.Size = new System.Drawing.Size(86, 20);
+			this.textBox4.TabIndex = 2;
+			// 
 			// textBox2
 			// 
 			this.textBox2.Location = new System.Drawing.Point(143, 45);
@@ -321,6 +326,16 @@ namespace Physics_challenge
 			this.label3.Size = new System.Drawing.Size(35, 13);
 			this.label3.TabIndex = 0;
 			this.label3.Text = "label1";
+			// 
+			// label4
+			// 
+			this.label4.AutoSize = true;
+			this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+			this.label4.Location = new System.Drawing.Point(6, 74);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(35, 13);
+			this.label4.TabIndex = 0;
+			this.label4.Text = "label1";
 			// 
 			// label2
 			// 
@@ -353,27 +368,6 @@ namespace Physics_challenge
 			// printDocument2
 			// 
 			this.printDocument2.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument2_PrintPage);
-			// 
-			// timer1
-			// 
-			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-			// 
-			// textBox4
-			// 
-			this.textBox4.Location = new System.Drawing.Point(143, 71);
-			this.textBox4.Name = "textBox4";
-			this.textBox4.Size = new System.Drawing.Size(86, 20);
-			this.textBox4.TabIndex = 2;
-			// 
-			// label4
-			// 
-			this.label4.AutoSize = true;
-			this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-			this.label4.Location = new System.Drawing.Point(6, 74);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(35, 13);
-			this.label4.TabIndex = 0;
-			this.label4.Text = "label1";
 			// 
 			// Form1
 			// 
@@ -436,7 +430,6 @@ namespace Physics_challenge
 		private System.Windows.Forms.TabPage tabPage3;
 		private System.Windows.Forms.PictureBox pictureBox1;
 		private System.Windows.Forms.Button button2;
-		private System.Windows.Forms.Timer timer1;
 		private System.Windows.Forms.TextBox textBox4;
 		private System.Windows.Forms.Label label4;
 	}
