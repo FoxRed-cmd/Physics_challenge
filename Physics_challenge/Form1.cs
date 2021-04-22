@@ -15,6 +15,7 @@ namespace Physics_challenge
 		List<MultiPoint<double>> points = new List<MultiPoint<double>>();
 		Graphics graphics;
 		Pen pen;
+		Bitmap ball = Resource1.ball;
 		SolidBrush brush;
 		SolidBrush clear = new SolidBrush(Color.White);
 		/// <summary>
@@ -66,6 +67,9 @@ namespace Physics_challenge
 					label3.Visible = true;
 				}
 			};
+
+			SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint, true);
+			UpdateStyles();
 
 		}
 		private void Form1_Load(object sender, EventArgs e)
@@ -223,16 +227,17 @@ namespace Physics_challenge
 		public async void Draw()
 		{
 			graphics = pictureBox1.CreateGraphics();
-			pen = new Pen(Color.LimeGreen, 2);
-			brush = new SolidBrush(Color.Silver);
+			//pen = new Pen(Color.LimeGreen, 2);
+			//brush = new SolidBrush(Color.Silver);
 			while (tabPage3.Focus() == true)
 			{
 
 				foreach (var item in points)
 				{
-					graphics.FillEllipse(brush, (float)item.X, (float)item.Y, 10, 10);
-					graphics.DrawEllipse(pen, (float)item.X, (float)item.Y, 10, 10);
+					graphics.DrawImage(ball, new Rectangle ((int)item.X, (int)item.Y, 40, 40));
+					//graphics.DrawEllipse(pen, (float)item.X, (float)item.Y, 10, 10);
 					await Task.Delay(10);
+					//Refresh();
 					graphics.FillRectangle(clear, 0, 0, pictureBox1.Width, pictureBox1.Height);
 				}
 			}

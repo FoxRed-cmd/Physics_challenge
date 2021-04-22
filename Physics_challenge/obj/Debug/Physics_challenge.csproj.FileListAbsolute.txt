@@ -9,3 +9,4 @@ D:\Projects\Physics_challenge\Physics_challenge\obj\Debug\Physics_challenge.exe
 D:\Projects\Physics_challenge\Physics_challenge\obj\Debug\Physics_challenge.pdb
 D:\Projects\Physics_challenge\Physics_challenge\obj\Debug\Physics_challenge.AboutBox1.resources
 D:\Projects\Physics_challenge\Physics_challenge\obj\Debug\Physics_challenge.csprojAssemblyReference.cache
+D:\Projects\Physics_challenge\Physics_challenge\obj\Debug\Physics_challenge.Resource1.resources
