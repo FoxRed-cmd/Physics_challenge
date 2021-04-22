@@ -12,7 +12,7 @@ namespace Physics_challenge
 	public partial class Form1 : Form
 	{
 		double speed, angle, timeFly, x, y, time = 0, interval;
-		List<DoublePoint> points = new List<DoublePoint>();
+		List<MultiPoint<double>> points = new List<MultiPoint<double>>();
 		Graphics graphics;
 		Pen pen;
 		SolidBrush brush;
@@ -260,8 +260,7 @@ namespace Physics_challenge
 			Label findX = new Label();
 			Label findTime = new Label();
 			Label findY = new Label();
-
-
+			points.Clear();
 
 			Series series = new Series();
 			series.BorderWidth = 3;
@@ -331,7 +330,7 @@ namespace Physics_challenge
 					x = Math.Round(FindX(speed = double.Parse(textBox1.Text), angle = double.Parse(textBox2.Text), time), 1);
 					y = Math.Round(FindY(speed = double.Parse(textBox1.Text), angle = double.Parse(textBox2.Text), time), 1);
 
-					points.Add(new DoublePoint() { X = x, Y = pictureBox1.Height - y });
+					points.Add(new MultiPoint<double> { X = x, Y = pictureBox1.Height - y });
 					chart1.Series[countSeries].Points.AddXY(x, y);
 
 					time += interval;
@@ -366,6 +365,7 @@ namespace Physics_challenge
 		}
 		private void Result(int value)
 		{
+			points.Clear();
 			try
 			{
 				timeFly = Math.Round(TimeFly(speed = double.Parse(textBox1.Text), angle = double.Parse(textBox2.Text)), 2);

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Physics_challenge
 {
-	class DoublePoint
+	struct MultiPoint<T>
 	{
-		public double X { get; set; }
-		public double Y { get; set; }
+		public T X { get; set; }
+		public T Y { get; set; }
 	}
 }
