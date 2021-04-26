@@ -238,7 +238,8 @@ namespace Physics_challenge
 					//graphics.DrawEllipse(pen, (float)item.X, (float)item.Y, 10, 10);
 					await Task.Delay(10);
 					//Refresh();
-					graphics.FillRectangle(clear, 0, 0, pictureBox1.Width, pictureBox1.Height);
+					pictureBox1.Refresh();
+					//graphics.FillRectangle(clear, 0, 0, pictureBox1.Width, pictureBox1.Height);
 				}
 			}
 		}
